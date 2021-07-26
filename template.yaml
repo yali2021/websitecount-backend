@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Returns the visitor counts for my resume webpage
+
+
+Globals:
+  Api:
+    Cors:
+      AllowMethods: "'GET,POST,OPTIONS'"
+      AllowHeaders: "'content-type'"
+      AllowOrigin: "'*'"
+      AllowCredentials: "'*'"
+  Function:
+    Timeout: 3
+
+
+Resources:
+  WebsiteCountFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: sitecount/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      FunctionName: websitecount
+      Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref CounterTable
+      Events:
+        WebsiteCountAPI:
+          Type: Api
+          Properties:
+            Path: /count
+            Method: GET
+
+  CounterTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: siteUrl
+        Type: String
+
+
+
