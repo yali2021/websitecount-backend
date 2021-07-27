@@ -15,6 +15,7 @@ def lambda_handler(event, context):
 	    },
 	    ReturnValues="UPDATED_NEW"
 	)
+    # print response
 
     # Format dynamodb response into variable count
     responseBody = json.dumps(
