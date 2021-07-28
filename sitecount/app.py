@@ -3,8 +3,9 @@ import boto3
 import os
 
 def lambda_handler(event, context):
-    dynamodb=boto3.client('dynamodb')
-    response=dynamodb.update_item(
+    dynamodb = boto3.client('dynamodb')
+    pipeline = boto3.client('codepipeline')
+    response = dynamodb.update_item(
         TableName = os.environ['TABLE_NAME'],
         Key={
             'siteUrl':{'S': "ya-resume.com"}
@@ -15,7 +16,10 @@ def lambda_handler(event, context):
 	    },
 	    ReturnValues="UPDATED_NEW"
 	)
-    # print response
+    pipeline_response = pipeline.put_job_success_result(
+        jobId=event['CodePipeline.job']['id']
+    )
+    return pipeline_response
 
     # Format dynamodb response into variable count
     responseBody = json.dumps(
