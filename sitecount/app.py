@@ -16,7 +16,7 @@ def lambda_handler(event, context):
 	    },
 	    ReturnValues="UPDATED_NEW"
 	)
-    # call PutJobSuccessResult
+    # call PutJobSuccessResult, test
     pipeline_response = pipeline.put_job_success_result(
         jobId=event['CodePipeline.job']['id']
     )
