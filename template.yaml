@@ -7,8 +7,8 @@ Metadata:
     Name: my-app
     Description: website counter
     Author: ya
-    HomePageUrl: https://github.com/yali2021/websitecount-backend
-    SourceCodeUrl: https://github.com/yali2021/websitecount-backend
+    HomePageUrl: https://github.com/yali2021/websitecounter-backend
+    SourceCodeUrl: https://github.com/yali2021/websitecounter-backend
 
 Globals:
   Api:
