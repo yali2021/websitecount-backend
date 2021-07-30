@@ -16,11 +16,7 @@ def lambda_handler(event, context):
 	    },
 	    ReturnValues="UPDATED_NEW"
 	)
-    # call PutJobSuccessResult, second test
-    pipeline_response = pipeline.put_job_success_result(
-        jobId=event['CodePipeline.job']['id']
-    )
-    return pipeline_response
+
 
     # Format dynamodb response into variable count
     responseBody = json.dumps(
