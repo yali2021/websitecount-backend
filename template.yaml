@@ -2,13 +2,6 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Returns the visitor counts for my resume webpage
 
-Metadata:
-  AWS::ServerlessRepo::Application:
-    Name: my-app
-    Description: website counter
-    Author: ya
-    HomePageUrl: https://github.com/yali2021/websitecounter-backend
-    SourceCodeUrl: https://github.com/yali2021/websitecounter-backend
 
 Globals:
   Api:
